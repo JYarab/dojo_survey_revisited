@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Result</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="results">
+            <h1>Submitted Info</h1>
+            <h2>Name: {{request.session.name}}</h2>
+            <h2>Email: {{request.session.email}}</h2>
+            <h2>Dojo Location: {{request.session.dojo_location}}</h2>
+            <h2>Favorite Language: {{request.session.fav_lang}}</h2>
+            <h2>Computer to be used: {{request.session.computer|title}}</h2>
+            <h2>Stacks Chosen: 
+                {% for item in request.session.stack %}
+                    {{item|title}}
+                {% endfor %}
+            </h2>
+            <h2>Additional Comments: {{request.session.comment}}</h2>
+        <a href='/'><button>Go Back</button></a>
+        </div>
+    </div>
+</body>
+</html>
